@@ -10,24 +10,8 @@ collections:
     label: "Recipe" # Used in the UI
     folder: "recipes" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}" # Filename template
-    fields: # The fields for each document, usually in front matter
+    slug: "{{title}}" # Automatically generate slug from title
+    fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Slug", name: "slug", widget: "string", required: false}
-      - {label: "Category", name: "category", widget: "string", required: false}
-      - {label: "Cuisine", name: "cuisine", widget: "string", required: false}
-      - {label: "Protein", name: "protein", widget: "string", required: false}
-      - {label: "Servings", name: "servings", widget: "number", required: false}
-      - {label: "Prep Time (minutes)", name: "prep_time", widget: "number", required: false}
-      - {label: "Cook Time (minutes)", name: "cook_time", widget: "number", required: false}
-      - {label: "Total Time (minutes)", name: "total_time", widget: "number", required: false}
-      - {label: "Difficulty", name: "difficulty", widget: "select", options: ["Easy", "Medium", "Difficult"], required: false}
-      - {label: "Cooking Methods", name: "cooking_methods", widget: "list", required: false}
-      - {label: "Equipment", name: "equipment", widget: "list", required: false}
-      - {label: "Tags", name: "tags", widget: "list", required: false}
-      - {label: "Favourite", name: "favourite", widget: "boolean", default: false, required: false}
-      - {label: "Made Before", name: "made_before", widget: "boolean", default: false, required: false}
-      - {label: "Would Make Again", name: "would_make_again", widget: "boolean", default: true, required: false}
       - {label: "Image", name: "image", widget: "image", required: false}
-      - {label: "Source (URL or Book)", name: "source", widget: "string", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
