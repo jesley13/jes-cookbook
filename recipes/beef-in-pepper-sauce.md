@@ -3,6 +3,7 @@ title: Beef in Pepper Sauce
 favourite: false
 made_before: false
 would_make_again: true
+image: /images/recipes/steak-bites-recipe-5.jpg
 ---
 1 kg beef | Serves 6
 
