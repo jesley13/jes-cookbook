@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: your-username/your-repo-name # IMPORTANT: Replace with your actual repo!
+  repo: jesley13/jes-cookbook
   branch: main # Branch to update
   use_pkce: true # No server required for GitHub OAuth
 
