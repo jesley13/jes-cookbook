@@ -3,8 +3,7 @@ backend:
   repo: jesley13/jes-cookbook
   branch: main # Branch to update
   use_pkce: true # No server required for GitHub OAuth
-
-local_backend: true
+  app_id: Ov23liEcp4w1bt3pOrAr
 
 media_folder: "public/images/recipes" # Media files will be stored in the repo under public/images/recipes
 public_folder: "/images/recipes" # The src attribute for uploaded media will begin with /images/recipes
