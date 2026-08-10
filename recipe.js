@@ -34,10 +34,6 @@ function renderRecipe() {
     document.getElementById('recipe-img-container').innerHTML = '';
   }
 
-  // Edit Button URL
-  const baseUrl = import.meta.env.BASE_URL || '/';
-  document.getElementById('edit-btn').href = `${baseUrl}admin/#/collections/recipes/entries/${currentRecipe.slug}`;
-
   // Content (Markdown)
   renderContent();
 }
