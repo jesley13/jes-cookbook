@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager</title>
   <!-- Force cache bust for config.yml -->
-  <link href="config.yml?v=3" type="text/yaml" rel="cms-config-url">
+  <link href="config.yml?v=4" type="text/yaml" rel="cms-config-url">
+  <!-- Include the script that enables Netlify Identity on this page. -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
   <!-- Floating Back to Home Button -->
-  <a href="/jes-cookbook/" style="position: fixed; bottom: 24px; right: 24px; z-index: 100000; background: #0f172a; color: white; padding: 12px 24px; border-radius: 9999px; text-decoration: none; font-family: sans-serif; font-weight: 600; box-shadow: 0 4px 6px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px;">
+  <a href="/" style="position: fixed; bottom: 24px; right: 24px; z-index: 100000; background: #0f172a; color: white; padding: 12px 24px; border-radius: 9999px; text-decoration: none; font-family: sans-serif; font-weight: 600; box-shadow: 0 4px 6px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px;">
     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
       <polyline points="9 22 9 12 15 12 15 22"></polyline>
