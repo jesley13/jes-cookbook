@@ -62,9 +62,13 @@ function renderRecipes(recipes) {
   noResults.classList.add('hidden');
 
   recipes.forEach(recipe => {
+    // Generate deterministic color based on title length and characters
+    const charSum = recipe.title.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
+    const gradIndex = (charSum % 6) + 1; // 1 to 6
+
     const card = document.createElement('a');
     card.href = `${import.meta.env.BASE_URL}recipe.html?slug=${recipe.slug}`;
-    card.className = 'recipe-card';
+    card.className = `recipe-card grad-${gradIndex}`;
     
     card.innerHTML = `
       <div class="card-content">

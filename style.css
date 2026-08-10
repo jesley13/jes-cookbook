@@ -1,22 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --bg-color: #0f172a; /* Slate 900 */
-  --surface-color: #1e293b; /* Slate 800 */
-  --surface-color-light: #334155; /* Slate 700 */
-  --text-primary: #f8fafc; /* Slate 50 */
-  --text-secondary: #94a3b8; /* Slate 400 */
-  --accent-color: #f59e0b; /* Amber 500 */
-  --accent-hover: #d97706; /* Amber 600 */
-  --danger-color: #ef4444; /* Red 500 */
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  --bg-color: #09090b; /* Zinc 950 */
+  --surface-color: rgba(24, 24, 27, 0.7); /* Zinc 900 glass */
+  --surface-color-light: #27272a; /* Zinc 800 */
+  --text-primary: #fafafa; /* Zinc 50 */
+  --text-secondary: #a1a1aa; /* Zinc 400 */
+  --accent-color: #f43f5e; /* Rose 500 */
+  --accent-hover: #e11d48; /* Rose 600 */
+  --radius-md: 16px;
+  --radius-lg: 24px;
   --radius-full: 9999px;
-  --transition: all 0.2s ease-in-out;
-  --glass-bg: rgba(30, 41, 59, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --glass-bg: rgba(9, 9, 11, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Gradients */
+.grad-1 { background: linear-gradient(135deg, #f43f5e 0%, #fb923c 100%); } /* Rose to Orange */
+.grad-2 { background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%); } /* Violet to Fuchsia */
+.grad-3 { background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%); } /* Sky to Blue */
+.grad-4 { background: linear-gradient(135deg, #10b981 0%, #059669 100%); } /* Emerald */
+.grad-5 { background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%); } /* Amber to Orange */
+.grad-6 { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); } /* Indigo to Purple */
+
+.grad-1, .grad-2, .grad-3, .grad-4, .grad-5, .grad-6 {
+  color: #ffffff;
 }
 
 * {
@@ -239,32 +251,48 @@ header {
 }
 
 .recipe-card {
-  background: var(--surface-color);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(255,255,255,0.1);
   transition: var(--transition);
   text-decoration: none;
-  color: inherit;
   display: flex;
   flex-direction: column;
+  position: relative;
+  min-height: 180px;
+}
+
+.recipe-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 100%);
+  z-index: 1;
 }
 
 .recipe-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--surface-color-light);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+  filter: brightness(1.1);
 }
 
-.card-image {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  background-color: var(--surface-color-light);
+.card-content {
+  padding: 24px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-secondary);
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+  z-index: 2;
+  justify-content: flex-end;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .card-content {
@@ -398,16 +426,28 @@ header {
 }
 
 .recipe-header-content {
-  padding: 24px 16px;
-  background: linear-gradient(to bottom, var(--surface-color), var(--bg-color));
-  border-bottom: 1px solid var(--surface-color-light);
+  padding: 64px 24px 48px;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  text-align: center;
+  position: relative;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-md);
+}
+
+@media (min-width: 900px) {
+  .recipe-header-content {
+    border-radius: var(--radius-lg);
+    margin-top: 24px;
+  }
 }
 
 .recipe-title {
-  font-size: 1.75rem;
-  font-weight: 700;
+  font-size: 2.5rem;
+  font-weight: 800;
   margin-bottom: 12px;
-  line-height: 1.2;
+  line-height: 1.1;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  color: #ffffff;
 }
 
 .recipe-quick-info {
