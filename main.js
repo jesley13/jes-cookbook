@@ -67,13 +67,11 @@ function renderRecipes(recipes) {
     card.className = 'recipe-card';
     
     const imageHtml = recipe.image
-      ? `<img src="${recipe.image}" alt="${recipe.title}" loading="lazy">`
-      : `<div style="height: 100%; display: flex; align-items: center; justify-content: center; background: var(--surface-color-light); color: var(--text-muted); font-size: 0.875rem;">No Image</div>`;
+      ? `<img src="${recipe.image}" alt="${recipe.title}" class="card-image" loading="lazy">`
+      : `<div class="card-image" style="background: var(--surface-color-light); color: var(--text-muted); font-size: 0.875rem;">No Image</div>`;
 
     card.innerHTML = `
-      <div class="card-img-container">
-        ${imageHtml}
-      </div>
+      ${imageHtml}
       <div class="card-content">
         <h3 class="card-title">${recipe.title}</h3>
       </div>
