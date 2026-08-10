@@ -27,12 +27,7 @@ function renderRecipe() {
   document.title = `${currentRecipe.title} - Jes' cookbook`;
   document.getElementById('recipe-title').textContent = currentRecipe.title;
   
-  // Image
-  if (currentRecipe.image) {
-    document.getElementById('recipe-img-container').innerHTML = `<img src="${getImageUrl(currentRecipe.image)}" alt="${currentRecipe.title}" class="recipe-header-img">`;
-  } else {
-    document.getElementById('recipe-img-container').innerHTML = '';
-  }
+  // Removed image block
 
   // Content (Markdown)
   renderContent();

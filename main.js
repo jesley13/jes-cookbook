@@ -66,12 +66,7 @@ function renderRecipes(recipes) {
     card.href = `${import.meta.env.BASE_URL}recipe.html?slug=${recipe.slug}`;
     card.className = 'recipe-card';
     
-    const imageHtml = recipe.image
-      ? `<img src="${recipe.image}" alt="${recipe.title}" class="card-image" loading="lazy">`
-      : `<div class="card-image" style="background: var(--surface-color-light); color: var(--text-muted); font-size: 0.875rem;">No Image</div>`;
-
     card.innerHTML = `
-      ${imageHtml}
       <div class="card-content">
         <h3 class="card-title">${recipe.title}</h3>
       </div>
