@@ -45,7 +45,11 @@ function renderRecipe() {
   // Times
   document.getElementById('info-prep').textContent = formatTime(currentRecipe.prep_time);
   document.getElementById('info-cook').textContent = formatTime(currentRecipe.cook_time);
-  document.getElementById('info-total').textContent = formatTime(currentRecipe.total_time);
+  if (currentRecipe.total_time) {
+    document.getElementById('info-total').textContent = formatTime(currentRecipe.total_time);
+  } else {
+    document.getElementById('info-total').parentElement.style.display = 'none';
+  }
 
   // Image
   if (currentRecipe.image) {
@@ -57,7 +61,8 @@ function renderRecipe() {
 
   // Edit Button URL
   // Decap CMS uses the collection name (recipes) and the slug
-  document.getElementById('edit-btn').href = `/admin/#/collections/recipes/entries/${currentRecipe.slug}`;
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  document.getElementById('edit-btn').href = `${baseUrl}admin/#/collections/recipes/entries/${currentRecipe.slug}`;
 
   // Content (Markdown)
   renderContent();
