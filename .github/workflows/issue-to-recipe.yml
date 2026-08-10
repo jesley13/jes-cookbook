@@ -1,0 +1,59 @@
+name: Issue to Recipe
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  create-recipe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Create Recipe File
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = context.payload.issue.title;
+            const body = context.payload.issue.body || '';
+            
+            // Clean up the title to make a valid filename
+            const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+            
+            // Create the content with the required dashed frontmatter
+            const content = `---\ntitle: ${title}\n---\n\n${body}`;
+            
+            // Save it to the recipes folder
+            const fs = require('fs');
+            if (!fs.existsSync('recipes')) {
+              fs.mkdirSync('recipes');
+            }
+            fs.writeFileSync(`recipes/${slug}.md`, content);
+            
+      - name: Commit and Push
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add recipes/
+          git commit -m "Add recipe: ${{ github.event.issue.title }}"
+          git push
+          
+      - name: Close Issue and Add Comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '✅ I have automatically converted this into a recipe and added it to your cookbook! It will appear on the website in about 60 seconds.'
+            });
+            github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed'
+            });
