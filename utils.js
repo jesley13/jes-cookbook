@@ -13,8 +13,12 @@ export async function getAllRecipes() {
     if (match) {
       const frontmatter = load(match[1]);
       const body = match[2];
+      const filenameSlug = path.split('/').pop().replace('.md', '');
+      const finalSlug = frontmatter.slug || filenameSlug;
+      
       recipes.push({
         ...frontmatter,
+        slug: finalSlug,
         body,
         path,
         htmlBody: marked.parse(body),
