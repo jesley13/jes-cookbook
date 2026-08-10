@@ -1,4 +1,4 @@
-import { getAllRecipes, formatTime } from './utils.js';
+import { getAllRecipes, formatTime, getImageUrl } from './utils.js';
 
 let currentRecipe = null;
 let baseServings = 4;
@@ -49,7 +49,7 @@ function renderRecipe() {
 
   // Image
   if (currentRecipe.image) {
-    document.getElementById('recipe-img-container').innerHTML = `<img src="${currentRecipe.image}" alt="${currentRecipe.title}" class="recipe-header-img">`;
+    document.getElementById('recipe-img-container').innerHTML = `<img src="${getImageUrl(currentRecipe.image)}" alt="${currentRecipe.title}" class="recipe-header-img">`;
   } else {
     // Default placeholder gradient
     document.getElementById('recipe-img-container').innerHTML = `<div class="recipe-header-img" style="background: linear-gradient(135deg, var(--surface-color-light), var(--surface-color));"></div>`;

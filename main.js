@@ -1,5 +1,5 @@
 import Fuse from 'fuse.js';
-import { getAllRecipes, formatTime } from './utils.js';
+import { getAllRecipes, formatTime, getImageUrl } from './utils.js';
 
 let allRecipes = [];
 let fuse;
@@ -63,13 +63,13 @@ function renderRecipes(recipes) {
 
   recipes.forEach(recipe => {
     const card = document.createElement('a');
-    card.href = `/recipe.html?slug=${recipe.slug}`;
+    card.href = `${import.meta.env.BASE_URL}recipe.html?slug=${recipe.slug}`;
     card.className = 'recipe-card';
     
     // Image
     let imgHtml = '';
     if (recipe.image) {
-      imgHtml = `<img src="${recipe.image}" alt="${recipe.title}" class="card-image" loading="lazy">`;
+      imgHtml = `<img src="${getImageUrl(recipe.image)}" alt="${recipe.title}" class="card-image" loading="lazy">`;
     } else {
       imgHtml = `<div class="card-image">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
