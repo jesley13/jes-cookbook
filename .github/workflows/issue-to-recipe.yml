@@ -19,15 +19,24 @@ jobs:
           script: |
             const title = context.payload.issue.title;
             const body = context.payload.issue.body || '';
+            const fs = require('fs');
             
             // Clean up the title to make a valid filename
             const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+            
+            // Check if title was edited and remove the old file
+            if (context.payload.action === 'edited' && context.payload.changes && context.payload.changes.title) {
+              const oldTitle = context.payload.changes.title.from;
+              const oldSlug = oldTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+              if (oldSlug !== slug && fs.existsSync(`recipes/${oldSlug}.md`)) {
+                fs.unlinkSync(`recipes/${oldSlug}.md`);
+              }
+            }
             
             // Create the content with the required dashed frontmatter
             const content = `---\ntitle: ${title}\n---\n\n${body}`;
             
             // Save it to the recipes folder
-            const fs = require('fs');
             if (!fs.existsSync('recipes')) {
               fs.mkdirSync('recipes');
             }
@@ -37,7 +46,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add recipes/
+          git add -A recipes/
           git commit -m "Update recipe: ${{ github.event.issue.title }}" || echo "No changes to commit"
           git push
           
