@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 
 :root {
   --bg-color: #09090b; /* Zinc 950 */
@@ -38,7 +38,7 @@
 }
 
 body {
-  font-family: 'Courier Prime', monospace;
+  font-family: 'Lucida Sans Typewriter', 'Lucida Console', monaco, monospace;
   background-color: var(--bg-color);
   color: var(--text-primary);
   line-height: 1.6;
@@ -351,7 +351,7 @@ html.light-mode .moon-icon { display: block !important; }
   font-weight: 400;
   color: var(--header-title);
   line-height: 1.4;
-  font-family: 'Courier Prime', monospace;
+  font-family: 'Lucida Sans Typewriter', 'Lucida Console', monaco, monospace;
 }
 
 
