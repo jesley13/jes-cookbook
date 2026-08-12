@@ -1,9 +1,7 @@
-import Fuse from 'fuse.js';
 import { getAllRecipes, formatTime, getImageUrl, initThemeToggle } from './utils.js';
 import { getIconForRecipe } from './icons.js';
 
 let allRecipes = [];
-let fuse;
 const recipeGrid = document.getElementById('recipe-grid');
 const searchInput = document.getElementById('search-input');
 const noResults = document.getElementById('no-results');
@@ -12,13 +10,6 @@ async function init() {
   initThemeToggle();
   allRecipes = await getAllRecipes();
   
-  // Setup Fuse for fuzzy searching
-  fuse = new Fuse(allRecipes, {
-    keys: ['title', 'body'],
-    threshold: 0.3,
-    ignoreLocation: true
-  });
-
   renderRecipes(sortRecipes(allRecipes));
   
   // Event Listeners
@@ -37,9 +28,11 @@ async function init() {
 function handleSearchAndFilter() {
   let results = allRecipes;
   
-  const query = searchInput.value.trim();
+  const query = searchInput.value.trim().toLowerCase();
   if (query) {
-    results = fuse.search(query).map(result => result.item);
+    results = allRecipes.filter(recipe => 
+      recipe.title && recipe.title.toLowerCase().includes(query)
+    );
   }
 
   // 2. Sort
