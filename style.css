@@ -26,14 +26,8 @@
 }
 
 /* Gradients for Cards */
-.grad-1 { background: linear-gradient(135deg, #f43f5e 0%, #fb923c 100%); }
-.grad-2 { background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%); }
-.grad-3 { background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%); }
-.grad-4 { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
-.grad-5 { background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%); }
-.grad-6 { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); }
-
-.grad-1, .grad-2, .grad-3, .grad-4, .grad-5, .grad-6 {
+.grad-gold {
+  background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
   color: #ffffff;
 }
 
