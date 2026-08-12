@@ -1,5 +1,6 @@
 import Fuse from 'fuse.js';
 import { getAllRecipes, formatTime, getImageUrl } from './utils.js';
+import { getIconForRecipe } from './icons.js';
 
 let allRecipes = [];
 let fuse;
@@ -48,8 +49,12 @@ function handleSearchAndFilter() {
 }
 
 function sortRecipes(recipes) {
-  // Just sort newest/alphabetical by default now since sorting is removed from UI
-  return [...recipes].reverse();
+  // Sort alphabetically by title
+  return [...recipes].sort((a, b) => {
+    const titleA = a.title || '';
+    const titleB = b.title || '';
+    return titleA.localeCompare(titleB);
+  });
 }
 
 function renderRecipes(recipes) {
@@ -62,15 +67,14 @@ function renderRecipes(recipes) {
   noResults.classList.add('hidden');
 
   recipes.forEach(recipe => {
-    // Generate deterministic color based on title length and characters
-    const charSum = recipe.title.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
-    const gradIndex = (charSum % 6) + 1; // 1 to 6
-
     const card = document.createElement('a');
     card.href = `${import.meta.env.BASE_URL}recipe.html?slug=${recipe.slug}`;
-    card.className = `recipe-card grad-${gradIndex}`;
+    card.className = `recipe-card`;
     
     card.innerHTML = `
+      <div class="card-icon-container">
+        ${getIconForRecipe(recipe.title)}
+      </div>
       <div class="card-content">
         <h3 class="card-title">${recipe.title}</h3>
       </div>

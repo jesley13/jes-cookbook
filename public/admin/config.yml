@@ -11,6 +11,7 @@ collections:
     folder: "recipes" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{title}}" # Automatically generate slug from title
+    sortable_fields: ['title']
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Image", name: "image", widget: "image", required: false}
