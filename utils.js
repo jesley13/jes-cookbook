@@ -47,3 +47,14 @@ export function getImageUrl(path) {
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
   return `${cleanBase}${cleanPath}`;
 }
+
+export function initThemeToggle() {
+  const toggleBtn = document.getElementById('theme-toggle');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('light-mode');
+      const isLight = document.documentElement.classList.contains('light-mode');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+  }
+}

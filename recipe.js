@@ -1,8 +1,9 @@
-import { getAllRecipes, getImageUrl } from './utils.js';
+import { getAllRecipes, getImageUrl, initThemeToggle } from './utils.js';
 
 let currentRecipe = null;
 
 async function init() {
+  initThemeToggle();
   const urlParams = new URLSearchParams(window.location.search);
   const slug = urlParams.get('slug');
   

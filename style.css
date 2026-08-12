@@ -8,6 +8,12 @@
   --text-secondary: #a1a1aa; /* Zinc 400 */
   --accent-color: #ef4444; /* Red 500 */
   --accent-hover: #dc2626; /* Red 600 */
+  --card-bg: #161616;
+  --card-border: #2a2a2a;
+  --card-hover-bg: #1a1a1a;
+  --card-hover-border: #4a4a4a;
+  --card-icon-stroke: #d4b483;
+  --header-title: #ffffff;
   --radius-md: 16px;
   --radius-lg: 20px;
   --radius-full: 9999px;
@@ -44,6 +50,22 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   padding-bottom: 80px; /* Space for bottom nav */
+}
+
+html.light-mode {
+  --bg-color: #f4f4f5; 
+  --surface-color: #ffffff; 
+  --surface-color-light: #e4e4e7; 
+  --text-primary: #18181b; 
+  --text-secondary: #52525b; 
+  --card-bg: #ffffff;
+  --card-border: #d4d4d8;
+  --card-hover-bg: #f4f4f5;
+  --card-hover-border: #a1a1aa;
+  --card-icon-stroke: #b48530;
+  --header-title: #18181b;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.1);
 }
 
 /* Layout */
@@ -112,7 +134,7 @@ header {
 .header-title-container h1 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--header-title);
   margin-bottom: 8px;
 }
 
@@ -133,6 +155,35 @@ header {
   color: #d4b483;
   font-size: 0.8rem;
 }
+
+/* Theme Toggle */
+.theme-toggle-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--surface-color-light);
+}
+
+.theme-toggle-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+html.light-mode .sun-icon { display: none; }
+html.light-mode .moon-icon { display: block !important; }
 
 /* Search */
 .search-container {
@@ -255,8 +306,8 @@ header {
 }
 
 .recipe-card {
-  background-color: #161616;
-  border: 1px solid #2a2a2a;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: 8px;
   transition: var(--transition);
   text-decoration: none;
@@ -267,8 +318,8 @@ header {
 }
 
 .recipe-card:hover {
-  border-color: #4a4a4a;
-  background-color: #1a1a1a;
+  border-color: var(--card-hover-border);
+  background-color: var(--card-hover-bg);
 }
 
 .card-icon-container {
@@ -278,14 +329,14 @@ header {
   align-items: center;
   height: 100%;
   min-height: 90px;
-  border-right: 1px solid #2a2a2a;
+  border-right: 1px solid var(--card-border);
   padding: 16px;
 }
 
 .card-icon-container svg {
   width: 48px;
   height: 48px;
-  stroke: #d4b483;
+  stroke: var(--card-icon-stroke);
   fill: none;
   stroke-width: 1.5;
   stroke-linecap: round;
@@ -304,7 +355,7 @@ header {
 .card-title {
   font-size: 1rem;
   font-weight: 400;
-  color: #ffffff;
+  color: var(--header-title);
   line-height: 1.4;
   font-family: 'Courier Prime', monospace;
 }
@@ -455,7 +506,7 @@ header {
   margin-bottom: 12px;
   line-height: 1.1;
   text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  color: #ffffff;
+  color: var(--header-title);
 }
 
 .recipe-quick-info {

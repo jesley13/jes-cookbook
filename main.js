@@ -1,5 +1,5 @@
 import Fuse from 'fuse.js';
-import { getAllRecipes, formatTime, getImageUrl } from './utils.js';
+import { getAllRecipes, formatTime, getImageUrl, initThemeToggle } from './utils.js';
 import { getIconForRecipe } from './icons.js';
 
 let allRecipes = [];
@@ -9,6 +9,7 @@ const searchInput = document.getElementById('search-input');
 const noResults = document.getElementById('no-results');
 
 async function init() {
+  initThemeToggle();
   allRecipes = await getAllRecipes();
   
   // Setup Fuse for fuzzy searching
