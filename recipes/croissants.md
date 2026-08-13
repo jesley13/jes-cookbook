@@ -1,5 +1,5 @@
 ---
-title: Croissants
+title: 🥐 Croissants
 ---
 
 Makes 12
