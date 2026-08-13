@@ -1,5 +1,5 @@
 ---
-title: Chilli Chicken
+title: 🌶️ Chilli Chicken
 ---
 
 Serves 6
