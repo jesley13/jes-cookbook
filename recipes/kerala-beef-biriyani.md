@@ -1,5 +1,5 @@
 ---
-title: Kerala Beef Biriyani
+title: 🥩Kerala Beef Biriyani
 ---
 
 Serves 6 generously
