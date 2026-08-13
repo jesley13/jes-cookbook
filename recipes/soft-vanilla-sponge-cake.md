@@ -1,5 +1,5 @@
 ---
-title: Soft Vanilla Sponge Cake
+title: 🍰 Soft Vanilla Sponge Cake
 ---
 
 Makes: 1 × 8-inch cake
