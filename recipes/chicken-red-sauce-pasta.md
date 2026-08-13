@@ -1,5 +1,5 @@
 ---
-title: Chicken Red Sauce Pasta
+title: 🍝 Chicken Red Sauce Pasta
 ---
 
 750 g pasta | 1 kg chicken | 6 generous servings
