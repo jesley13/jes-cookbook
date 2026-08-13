@@ -1,5 +1,5 @@
 ---
-title: Chicken Pizza
+title: 🍕Chicken Pizza
 ---
 
 This makes two 11–12 inch pizzas, enough for 6 adults if served with a side.
