@@ -1,5 +1,5 @@
 ---
-title: Kerala Pork Fry
+title: 🐖Kerala Pork Fry
 ---
 
 Serves 6
